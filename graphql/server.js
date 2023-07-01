@@ -15,6 +15,7 @@ type Query {
     hello: String
     welcomeMessage(name: String!): String
     getUser: User
+    getUsers: [User]
 
 }
 `)
@@ -34,6 +35,24 @@ const root = {
             college: 'SPU'
         }
         return user;
+    },
+    getUsers: () => {
+        const users = [{
+            name: 'Eldon',
+            age: 25,
+            college: 'SPU'
+        },
+        {
+            name: 'Eldon',
+            age: 25,
+            college: 'SPU'
+        },
+        {
+            name: 'Eldon',
+            age: 25,
+            college: 'SPU'
+        }]
+        
     }
 };
 
