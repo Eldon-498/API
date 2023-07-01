@@ -5,9 +5,16 @@ const {graphqlHTTP} = require('express-graphql');
 const app = express();
 
 const schema = buildSchema(`
+type User {
+    name: String
+    age: Int
+    college: String
+}
+
 type Query {
     hello: String
-    welcomeMessage(name: String): String
+    welcomeMessage(name: String!): String
+    getUser: User
 
 }
 `)
@@ -20,6 +27,14 @@ const root = {
         console.log(args);
         return `Hey ${args.name}, how\'s life`;
     },
+    getUser: () => {
+        const user = {
+            name: 'Eldon',
+            age: 25,
+            college: 'SPU'
+        }
+        return user;
+    }
 };
 
 app.use('/graphql', graphqlHTTP({
