@@ -1,6 +1,7 @@
 const express = require('express');
 const {buildSchema} = require('graphql');
 const {graphqlHTTP} = require('express-graphql');
+const axios = require('axios')
 
 const app = express();
 
@@ -65,7 +66,9 @@ const root = {
         
     },
     getPosts: () => {
-
+        axios.
+        get('https://jsonplaceholder.typicode.com/comments').
+        then(comments => comments.data)
     }
 };
 
