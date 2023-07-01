@@ -5,6 +5,14 @@ const {graphqlHTTP} = require('express-graphql');
 const app = express();
 
 const schema = buildSchema(`
+type Post{
+    postId: Int
+    it: Int
+    name: String
+    body: String
+
+}
+
 type User {
     name: String
     age: Int
@@ -43,15 +51,16 @@ const root = {
             college: 'SPU'
         },
         {
-            name: 'Eldon',
+            name: 'Dan',
             age: 25,
-            college: 'SPU'
+            college: 'USIU'
         },
         {
-            name: 'Eldon',
-            age: 25,
-            college: 'SPU'
+            name: 'Christ',
+            age: 33,
+            college: 'Jerusalem'
         }]
+        return users;
         
     }
 };
