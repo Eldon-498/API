@@ -11,6 +11,12 @@ type Query {
 
 `)
 
+const root = {
+    hello: () => {
+        return 'hello world';
+    },
+}
+
 app.use('/graphql', graphqlHTTP({
     graphiql: true,
     schema: schema,
