@@ -5,7 +5,7 @@ const {graphqlHTTP} = require('express-graphql');
 const app = express();
 
 const schema = buildSchema(`
-type Post{
+type Post {
     postId: Int
     it: Int
     name: String
@@ -24,6 +24,7 @@ type Query {
     welcomeMessage(name: String!): String
     getUser: User
     getUsers: [User]
+    getPosts: [Post]
 
 }
 `)
@@ -62,6 +63,9 @@ const root = {
         }]
         return users;
         
+    },
+    getPosts: () => {
+
     }
 };
 
