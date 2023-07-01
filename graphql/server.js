@@ -40,7 +40,7 @@ input UserInput {
 
 type Mutation {
  setMessage(newMessage: String): String
- createUser(name: String!, age: Int, college:String! ): User
+ createUser(input: UserInput): User
 }
 `)
 
@@ -87,8 +87,8 @@ const root = {
         message = newMessage;
         return message;
     },
-    createUser: ({name, age, college}) => {
-            return {name, age, college}
+    createUser: (args) => {
+            return args.input
     }
 };
 
