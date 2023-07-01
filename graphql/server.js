@@ -6,10 +6,11 @@ const axios = require('axios')
 const app = express();
 
 const schema = buildSchema(`
-type Post {
+type Comment {
     postId: Int
     it: Int
     name: String
+    email: String
     body: String
 
 }
@@ -25,7 +26,7 @@ type Query {
     welcomeMessage(name: String!): String
     getUser: User
     getUsers: [User]
-    getPosts: [Post]
+    getCommnents: [Comment]
 
 }
 `)
