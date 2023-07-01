@@ -31,6 +31,13 @@ type Query {
     getComments: [Comment]
 
 }
+
+input UserInput {
+    name: String!
+    age: Int!
+    college: String!
+}
+
 type Mutation {
  setMessage(newMessage: String): String
  createUser(name: String!, age: Int, college:String! ): User
@@ -79,6 +86,9 @@ const root = {
     setMessage: ({ newMessage }) => {
         message = newMessage;
         return message;
+    },
+    createUser: ({name, age, college}) => {
+            return {name, age, college}
     }
 };
 
