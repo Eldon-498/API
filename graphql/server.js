@@ -33,6 +33,7 @@ type Query {
 }
 type Mutation {
  setMessage(newMessage: String): String
+ createUser(name: String!, age: Int, college:String! ): User
 }
 `)
 
