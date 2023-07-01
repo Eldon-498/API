@@ -5,6 +5,8 @@ const axios = require('axios')
 
 const app = express();
 
+let message = 'This is a message';
+
 const schema = buildSchema(`
 type Comment {
     postId: Int
@@ -26,8 +28,11 @@ type Query {
     welcomeMessage(name: String!): String
     getUser: User
     getUsers: [User]
-    getCommnents: [Comment]
+    getComments: [Comment]
 
+}
+type Mutation {
+ setMessage(newMessage: String): String
 }
 `)
 
@@ -66,10 +71,13 @@ const root = {
         return users;
         
     },
-    getPosts: () => {
-        axios.
-        get('https://jsonplaceholder.typicode.com/comments').
-        then(comments => comments.data)
+    getComments: async () => {
+       const result = await axios.get('https://jsonplaceholder.typicode.com/comments');
+       return result.data;
+    },
+    setMessage: ({ newMessage }) => {
+        message = newMessage;
+        return message;
     }
 };
 
