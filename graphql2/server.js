@@ -1,20 +1,12 @@
 const express = require("express");
+
 const {ApolloServer, gql} = require("apollo-server-express");
 
-const typeDefs = gql`
-type Query{
-    hello: String
-}
+const resolvers = require("./resolvers");
+
+const typeDefs = require("./typeDefs");
 
 
-`
-const resolvers = {
-    Query: {
-    hello: () => {
-       return 'hello world';
-    }
-}
-}
 
 async function startServer (){
     const app = express();
